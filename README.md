@@ -4,34 +4,17 @@
 基于Vue+Axios开发的网页音乐播放器  调用接口属于网易云音乐 NodeJS 版 API
 
 #### 软件架构
-软件架构说明
+Vue.js 渐进式框架
+Axios 基于 Promise 的 HTTP 客户端，可以工作于浏览器中，也可以在 node.js 中使用
 
 
-#### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1.  歌曲搜索：P1 服务器返回数据比较复杂时，获取时候注意层级结构 P2 通过审查元素快速定位需要操纵的元素
+2.  歌曲播放：P1 点击播放(v-on 自定义参数简化编码) P2 歌曲地址获取(接口 地址id) P3 歌曲地址设置 (src改变 v-bind)
+3.  歌曲封面：P1 点击播放(增加逻辑) P2 歌曲封面获取(接口 地址id) P3 歌曲地址设置(src改变 v-bind操纵属性)
+4.  歌曲评论：P1 点击播放 P2 歌曲评论获取 P3 歌曲评论渲染 (通过v-for生成列表)
+5.  播放动画：P1 监听音乐播放(v-on play)  audio的play事件在音乐播放的时候触发 P2 监听音乐暂停(v-on pause) audio的pause事件在音乐播放的时候触发 P3 操纵类名(v-bind 对象)
+6.  MV播放：P1 MV图标显示(v-if) P2 MV地址获取(接口) P3 遮罩层(v-show v-on) P4 MV地址设置(v-bind)
