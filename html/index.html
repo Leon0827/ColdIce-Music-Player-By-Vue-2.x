@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <link rel="shortcut icon" href="../img/03 综合应用-Shorticon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/Vue+Axios ColdIce Player.css">
+</head>
+<!-- 功能： -->
+<!-- 1.歌曲搜索：P1 服务器返回数据比较复杂时，获取时候注意层级结构 P2 通过审查元素快速定位需要操纵的元素 -->
+<!-- 2.歌曲播放：P1 点击播放(v-on 自定义参数简化编码) P2 歌曲地址获取(接口 地址id) P3 歌曲地址设置(src改变 v-bind) 歌曲id依赖歌曲搜索的结果，对于不用的数据也需要关注 -->
+<!-- 3.歌曲封面：P1 点击播放(增加逻辑) P2 歌曲封面获取(接口 地址id) P3 歌曲地址设置(src改变 v-bind操纵属性) 本地无法获取的数据，基本都会有对应的接口 -->
+<!-- 4.歌曲评论：P1 点击播放 P2 歌曲评论获取 P3 歌曲评论渲染 通过v-for生成列表 -->
+<!-- 5.播放动画：P1 监听音乐播放(v-on play)  audio的play事件在音乐播放的时候触发 P2 监听音乐暂停(v-on pause) audio的pause事件在音乐播放的时候触发 P3 操纵类名(v-bind 对象) 通过对象设置类名，类名生效与否取决于后面值得真假 -->
+<!-- 6.MV播放：P1 MV图标显示(v-if) P2 MV地址获取(接口) P3 遮罩层(v-show v-on) P4 MV地址设置(v-bind) -->
+<!-- 总结： -->
+<!-- 1.不同接口需要的数据不同，阅读文档要仔细 -->
+<!-- 2.页面结构复杂，通过审查元素进行快速定位 -->
+<!-- 3.响应式的数据在data中定义 -->
+
+<body>
+    <div class="wrap">
+        <!-- 播放器主体部分 -->
+        <div class="play-wrap" id="player">
+            <!-- 顶部搜索栏 -->
+            <div class="search-bar">
+                <img src="../img/ColdIce.png" alt="" height="50px">
+                <input type="text" placeholder="搜索音乐、歌曲名" v-model="query" @keyup.enter="searchMusic">
+            </div>
+            <!-- 核心区 -->
+            <div class="center-con">
+                <!-- 歌曲列表 -->
+                <div class="song-wrapper" ref="song-wrapper">
+                    <ul class="song-list" style="padding-left:0">
+                        <li v-for="item in musicList">
+                            <a href="javascript:;" @click="playMusic(item.id)"></a>
+                            <b>{{item.name}}</b>
+                            <span v-if="item.mvid!=0" @click="playMv(item.mvid)">
+                                <i></i>
+                            </span>
+                        </li>
+                    </ul>
+                    <img src="../img/03 综合应用-Line.png" class="switch-line" alt="">
+                </div>
+                <!-- 歌曲封面展示 -->
+                <div class="player-con" :class="{playing:isPlaying}">
+                    <img src="../img/03 综合应用PlayerBar.png" alt="" class="play-bar">
+                    <img src="../img/03 综合应用PlayerDisc.png" alt="" class="disc autoRotate">
+                    <img :src="musicCover" alt="" class="cover autoRotate">
+                </div>
+                <!-- 评论展示 -->
+                <div class="comment-wrapper" ref="comment-wrapper">
+                    <h5 class="title">热门评论</h5>
+                    <div class="comment-list">
+                        <dl v-for="item in hotComments">
+                            <dt>
+                                <img :src="item.user.avatarUrl" alt="">
+                            </dt>
+                            <dd class="name">{{item.user.nickname}}</dd>
+                            <dd class="detail">{{item.content}}</dd>
+                        </dl>
+                    </div>
+                    <img src="../img/03 综合应用-Line.png" alt="" class="right-line">
+                </div>
+            </div>
+            <!-- 底部播放栏 -->
+            <div class="audio-con">
+                <audio ref="audio" :src="musicUrl" @play="play" @pause="pause" controls autoplay loop
+                    class="myaudio"></audio>
+            </div>
+            <div class="video-con" v-show="isShow">
+                <video ref="video" :src="mvUrl" controls="controls"></video>
+                <div class="mask" @click="hideMv"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/Vue+Axios ColdIce Player.js"></script>
+</body>
+
+</html>
