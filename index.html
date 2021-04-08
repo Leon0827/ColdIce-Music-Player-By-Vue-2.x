@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Music Player</title>
-    <link rel="shortcut icon" href="../img/03 综合应用-Shorticon.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/Vue+Axios ColdIce Player.css">
+    <link rel="shortcut icon" href="./img/03 综合应用-Shorticon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/Vue+Axios ColdIce Player.css">
 </head>
 <!-- 功能： -->
 <!-- 1.歌曲搜索：P1 服务器返回数据比较复杂时，获取时候注意层级结构 P2 通过审查元素快速定位需要操纵的元素 -->
@@ -28,7 +28,7 @@
         <div class="play-wrap" id="player">
             <!-- 顶部搜索栏 -->
             <div class="search-bar">
-                <img src="../img/ColdIce.png" alt="" height="50px">
+                <img src="./img/ColdIce.png" alt="" height="50px">
                 <input type="text" placeholder="搜索音乐、歌曲名" v-model="query" @keyup.enter="searchMusic"
                     @dblclick="searchMusic">
             </div>
@@ -45,12 +45,12 @@
                             </span>
                         </li>
                     </ul>
-                    <img src="../img/03 综合应用-Line.png" class="switch-line" alt="">
+                    <img src="./img/03 综合应用-Line.png" class="switch-line" alt="">
                 </div>
                 <!-- 歌曲封面展示 -->
                 <div class="player-con" :class="{playing:isPlaying}">
-                    <img src="../img/03 综合应用PlayerBar.png" alt="" class="play-bar">
-                    <img src="../img/03 综合应用PlayerDisc.png" alt="" class="disc autoRotate">
+                    <img src="./img/03 综合应用PlayerBar.png" alt="" class="play-bar">
+                    <img src="./img/03 综合应用PlayerDisc.png" alt="" class="disc autoRotate">
                     <img :src="musicCover" alt="" class="cover autoRotate">
                 </div>
                 <!-- 评论展示 -->
@@ -65,7 +65,7 @@
                             <dd class="detail">{{item.content}}</dd>
                         </dl>
                     </div>
-                    <img src="../img/03 综合应用-Line.png" alt="" class="right-line">
+                    <img src="./img/03 综合应用-Line.png" alt="" class="right-line">
                 </div>
             </div>
             <!-- 底部播放栏 -->
@@ -82,7 +82,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../js/Vue+Axios ColdIce Player.js"></script>
+    <script src="./js/Vue+Axios ColdIce Player.js"></script>
 </body>
 
 </html>
