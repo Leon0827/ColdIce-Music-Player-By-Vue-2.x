@@ -93,7 +93,10 @@ var app = new Vue({
                     console.log(response.data.data.url);
                     that.isShow = true;
                     that.mvUrl = response.data.data.url;
+                    // 暂停歌曲播放
+                    that.$refs.audio.pause();
                 }, function (err) { })
+
         },
         hideMv: function () {
             this.isShow = false;
