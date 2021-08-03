@@ -1,10 +1,10 @@
 # Vue+Axios ColdIce Player
 
 #### 介绍
-基于Vue+Axios开发的网页音乐播放器  调用接口属于网易云音乐 NodeJS 版 API
+基于Vue.2x + Axios开发的网页音乐播放器  调用接口属于网易云音乐 NodeJS 版 API
 
 #### 软件架构
-Vue.js 渐进式框架
+Vue.2x 渐进式框架
 Axios 基于 Promise 的 HTTP 客户端，可以工作于浏览器中，也可以在 node.js 中使用
 
 
